@@ -49,10 +49,24 @@ namespace HelloDungeon
             Console.WriteLine("Welcome to New London " + playerName);
             Console.WriteLine("We need your help to defeat the " + stage1BossEnemy);
             Console.WriteLine("Do you agree to help us? We promise a hefty reward if you are to prevail.");
-            Console.ReadLine();
 
-            Console.WriteLine("Thank you " + playerName + ", may the luck of the gods be on your side.");
+            Console.WriteLine("1.Yes");
+            Console.WriteLine("2.No");
 
+            string playerChoice = Console.ReadLine();
+
+            if (playerChoice == "1") 
+            {
+                Console.WriteLine("Thank you " + playerName + ", may the gods watch over you on your journey.");
+            }
+
+            if (playerChoice == "2") 
+            {
+                Console.WriteLine("How unfortunate, come back later then when you are ready.");
+            }
+
+ 
+            
         }
     }
 }
