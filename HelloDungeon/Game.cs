@@ -36,12 +36,15 @@ namespace HelloDungeon
 
             // Slime stats
 
-            int slimehealth = 2;
-            int slimedamage = 3;
-            int slimerange = 1;
+            int slimeHealth = 10;
+            int slimeDamage = 3;
+            int slimeRange = 1;
             int slimeAttackSpeed = 1;
 
+            // Bat stats
 
+            int batHealth = 15;
+            int batDamage = 5;
 
             // Weapon Classes
 
