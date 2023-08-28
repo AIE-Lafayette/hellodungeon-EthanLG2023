@@ -19,8 +19,8 @@ namespace HelloDungeon
             int stageLevel = 1;
 
             // Player profile
-            string playerName;
-            string playerChoice;
+            string playerName = "";
+            string playerChoice = "";
             bool playerIsAlive = health > 0;
             int playerDamage = 1;
             int playerAttckSpeed = 1;
@@ -66,9 +66,9 @@ namespace HelloDungeon
 
             // The gun stats
 
-            int gunDamage = 10;
+            int gunDamage = 1000000000;
             int gunAttackSpeed = 1;
-            int gunRange = 7;
+            int gunRange = 10;
 
             // Starting story line
             Console.WriteLine("You wake up in a strange place unfamiliar to you. You sit up and look around");
@@ -80,87 +80,122 @@ namespace HelloDungeon
             Console.WriteLine("You arive in the Town and are greeted by a strange man");
             Console.WriteLine("Hello there traveler!");
             Console.ReadKey(true);
+            Console.Clear();
             Console.WriteLine("I am the Village Elder Karamm");
-            Console.WriteLine("What might be your name?");
 
-            // Player name
-            string firstName = Console.ReadLine();
-            string lastName = Console.ReadLine();
+            while (playerChoice != "1")
+            {
+                Console.WriteLine("What might be your name?");
 
-            playerName = firstName + " " + lastName;
+                Console.Write(">");
+                // Player name
+                string firstName = Console.ReadLine();
+                string lastName = Console.ReadLine();
+
+                Console.WriteLine("Is this the name you would like?");
+
+                Console.WriteLine("1.Yes");
+                Console.WriteLine("2.No");
+
+                Console.Write(">");
+                playerChoice = Console.ReadLine();
+
+                playerName = firstName + " " + lastName;
+            }
+
+            playerChoice = "";
 
             // Continued story line
             Console.Clear();
             Console.WriteLine("Welcome to New London " + playerName);
             Console.ReadKey(true);
             Console.WriteLine("Enjoy the shops and rest at the inn and come see me when you can i have something to ask of you.");
-
+            
             Console.ReadKey(true);
-            Console.Clear();
-            Console.WriteLine("Thank you for coming back to see me. We need your help to defeat the " + stage1BossEnemy + " that terrorizes our village");
-            Console.ReadKey(true);
-            Console.WriteLine("Do you agree to help us? We promise a hefty reward if you are to prevail.");
 
-            // Player choses to help or not
-
-            Console.WriteLine("1.Yes");
-            Console.WriteLine("2.No");
-
-            playerChoice = Console.ReadLine();
-
-            if (playerChoice == "1" || playerChoice == "yes") 
+            while (playerChoice != "1" && playerChoice != "yes")
             {
-                Console.WriteLine("Thank you " + playerName);
+                Console.Clear();
+                Console.WriteLine("Thank you for coming back to see me. We need your help to defeat the " + stage1BossEnemy + " that terrorizes our village");
+                Console.ReadKey(true);
+                Console.WriteLine("Do you agree to help us? We promise a hefty reward if you are to prevail.");
+
+                // Player choses to help or not
+
+                Console.WriteLine("1.Yes");
+                Console.WriteLine("2.No");
+
+                Console.Write(">");
+                playerChoice = Console.ReadLine();
+
+                Console.Clear();
+                if (playerChoice == "1" || playerChoice == "yes")
+                {
+                    Console.WriteLine("Thank you " + playerName);
+                    Console.ReadKey(true);
+                }
+
+                else if (playerChoice == "2" || playerChoice == "no")
+                {
+                    Console.WriteLine("How unfortunate, come back later then when you are ready.");
+                    Console.ReadKey(true);
+                }
+                else
+                {
+                    Console.WriteLine("Pick one of the choices Dumbass");
+                    Console.ReadKey(true);
+                }
             }
 
-            else if (playerChoice == "2" || playerChoice == "no") 
-            {
-                Console.WriteLine("How unfortunate, come back later then when you are ready.");
-            }
-            else
-            {
-                Console.WriteLine("Pick one of the choices Dumbass");
-            }
+            playerChoice = "";
 
             // Player chosses weapon
 
-            Console.ReadKey(true);
-            Console.ReadKey(true);
-            Console.Clear();
-            Console.WriteLine("Now before we begin please selct your weapon");
-            Console.WriteLine("1.The Sword of Aragorn");
-            Console.WriteLine("2.The Bow of Legolas");
-            Console.WriteLine("3.A Fucking Gun");
-
-            playerChoice = Console.ReadLine();
-
-            if (playerChoice == "1")
+            while (playerChoice != "yes")
             {
-                playerDamage = swordDamage;
-                playerAttckSpeed = swordAttackSpeed;
-                playerRange = swordRange;
-            }
+                Console.ReadKey(true);
+                Console.Clear();
+                Console.WriteLine("Now before we begin please selct your weapon");
+                Console.WriteLine("1.The Sword of Aragorn");
+                Console.WriteLine("2.The Bow of Legolas");
+                Console.WriteLine("3.A Fucking Gun");
 
-            else if (playerChoice == "2")
-            {
-                playerDamage = bowDamage;
-                playerAttckSpeed = bowAttackSpeed;
-                playerRange = bowRange;
-            }
+                playerChoice = Console.ReadLine();
 
-            else if (playerChoice == "3")
-            {
-                playerDamage = gunDamage;
-                playerAttckSpeed = gunAttackSpeed;
-                playerRange = gunRange;
-            }
+                if (playerChoice == "1")
+                {
+                    playerDamage = swordDamage;
+                    playerAttckSpeed = swordAttackSpeed;
+                    playerRange = swordRange;
+                }
 
-            Console.ReadKey(true);
+                else if (playerChoice == "2")
+                {
+                    playerDamage = bowDamage;
+                    playerAttckSpeed = bowAttackSpeed;
+                    playerRange = bowRange;
+                }
+
+                else if (playerChoice == "3")
+                {
+                    playerDamage = gunDamage;
+                    playerAttckSpeed = gunAttackSpeed;
+                    playerRange = gunRange;
+                }
+
+                Console.Clear();
+                Console.WriteLine("Are you sure you want this weapon");
+                Console.WriteLine("yes");
+                Console.WriteLine("no");
+
+                playerChoice = Console.ReadLine();
+            }
             Console.Clear();
             Console.WriteLine("Goodluck and may the gods watch over you.");
             Console.ReadKey(true);
             Console.WriteLine("You are led into the dark forest where your jorney officially begins.");
-
+            
+            
             bool enemyAlive = true;
 
             if (playerIsAlive && enemyAlive)
