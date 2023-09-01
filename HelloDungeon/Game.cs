@@ -12,30 +12,37 @@ namespace HelloDungeon
         string DisplayMenu(string prompt, string option1, string option2, string option3)
         {
             string playerChoice = "";
-
             while (playerChoice != "1" && playerChoice != "2" && playerChoice != "3")
             {
+                //display prompt
+                Console.Clear();
                 Console.WriteLine(prompt);
 
-                if (playerChoice != "")
-                {
-                    Console.WriteLine("1." + option1);
-                }
-                if (playerChoice != "")
-                {
-                    Console.WriteLine("2." + option2);
-                }
-                if (playerChoice != "")
+                //display options
+                Console.WriteLine("1." + option1);
+                Console.WriteLine("2." + option2);
+
+                if (option3 != "")
                 {
                     Console.WriteLine("3." + option3);
                 }
-                else
-                {
-                    Console.Clear();
-                    Console.WriteLine("Please select a correct choice.");
-                }
+                //get player input
+                Console.Write("> ");
+                playerChoice = Console.ReadLine();
 
-                Console.Write("? ");
+                if (playerChoice != "1" && playerChoice != "2")
+                {
+                    //if player input isnt one of options
+                    if (playerChoice == "3" && playerChoice != "")
+                    {
+                        continue;
+                    }
+                    //error messages
+                    Console.Clear();
+                    Console.WriteLine("Invalid input.");
+                    Console.WriteLine("Please Select a Corect choice");
+                    playerChoice = "";
+                }
 
                 playerChoice = Console.ReadLine();
 
@@ -45,21 +52,10 @@ namespace HelloDungeon
         }
             public void Run()
             {
-                /// Create a Function that can taks in one integer
-                /// it should print to the console all even numbers between numbers between
-                /// 0 and that number
-                /// Don't use a while loop
-                /// input 0,5
-                /// output 0,2,4
+             
 
-
-
-
-
-
-
-
-                return;
+               
+                 
                 // Player Health and damage
                 float health = 100.0f;
                 float damage = 1.0f;
@@ -120,6 +116,7 @@ namespace HelloDungeon
                 int gunAttackSpeed = 5;
                 int gunRange = 6;
 
+                //Game loop
                 while (gameOver != true)
                 {
                     // Starting story line
@@ -269,9 +266,27 @@ namespace HelloDungeon
                         //Display results
                     }
 
-                    while (playerChoice != "1")
+                    //end of stage
+                    while (playerChoice != "2")
                     {
-                        Console.WriteLine();
+                        //end of stage choices
+                        Console.WriteLine("Congratulations " + playerName + " youve made it to the end of the first stage.");
+                        Console.WriteLine("If you'd like to continue to another stage press 1.");
+                        Console.WriteLine("If youd like to restart this stage press 2.");
+
+                        if (playerChoice == "1")
+                        {
+                            Console.WriteLine("Goodluck Adveturer the next town from here is in the east i've heard some bad things happening.");
+                        }
+                        if (playerChoice == "2")
+                        {
+                            gameOver = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input please select a answer choice");
+                        }
+
                     }
 
                 }
